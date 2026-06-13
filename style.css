@@ -585,6 +585,313 @@ img {
     transform: translate(0);
 }
 
+/* ===== TRIAL SECTION ===== */
+.trial-dashboard {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.trial-stats-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.trial-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    background: rgba(0,0,0,0.2);
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    position: relative;
+    border: 1px solid var(--glass-border);
+}
+
+.trial-stats h4 {
+    position: absolute;
+    top: -15px;
+    background: var(--clr-orange-sunset);
+    padding: 2px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    font-family: var(--font-primary);
+}
+
+.trial-stats.cpu-stats h4 {
+    background: var(--clr-purple-dusk);
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--font-secondary);
+    color: var(--clr-orange-sunset);
+}
+
+.spinner-container {
+    margin-bottom: 2rem;
+}
+
+.trial-timeline {
+    margin: 2rem 0 3rem;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-track {
+    height: 70px;
+    background: var(--clr-dark-bg);
+    border-radius: 35px;
+    position: relative;
+    border: 2px solid var(--glass-border);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.timeline-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('PapanPermainan.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+    z-index: 1;
+}
+
+.timeline-character {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    z-index: 2;
+    transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Calculate max right so it doesn't overflow */
+    margin-left: 5px;
+}
+
+.timeline-character.player-track {
+    top: 30%;
+}
+
+.timeline-character.cpu-track {
+    top: 70%;
+    z-index: 3;
+}
+
+.timeline-character img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.8));
+    border-radius: 50%;
+}
+
+.timeline-character.player-track img {
+    border: 3px solid var(--clr-orange-sunset);
+}
+
+.timeline-character.cpu-track img {
+    border: 3px solid var(--clr-purple-dusk);
+}
+
+.timeline-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--clr-text-muted);
+    font-weight: 600;
+}
+
+.btn-spin {
+    font-size: 1.2rem;
+    padding: 1rem 3rem;
+}
+
+.btn-spin:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.trial-log {
+    min-height: 80px;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.trial-log.log-event { border-left: 5px solid #ff6b6b; }
+.trial-log.log-special { border-left: 5px solid #cc88ff; }
+.trial-log.log-minigame { border-left: 5px solid #4ade80; }
+
+/* ===== MODALS ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: rgba(15, 5, 24, 0.95);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--clr-orange-sunset);
+    box-shadow: 0 0 30px rgba(255, 126, 95, 0.3);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--clr-orange-warm);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+/* Specific Minigames UI */
+.gobak-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.gobak-cell {
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid var(--clr-text-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.gobak-cell:hover { background: rgba(255,255,255,0.2); }
+.gobak-cell.player-selected { background: var(--clr-orange-sunset); border-color: var(--clr-orange-warm); }
+.gobak-cell.cpu-selected { background: var(--clr-purple-dusk); border-color: #fff; }
+.gobak-cell.overlap { background: #ff4444; border-color: #fff; }
+
+.slider-container {
+    width: 100%;
+    height: 30px;
+    background: #333;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.slider-target {
+    position: absolute;
+    top: 0; height: 100%;
+    background: var(--clr-orange-sunset);
+}
+
+.slider-cursor {
+    position: absolute;
+    top: -5px; bottom: -5px;
+    width: 6px;
+    background: white;
+    box-shadow: 0 0 10px white;
+    left: 0;
+}
+
+.stik-battle {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+    perspective: 1000px;
+}
+
+.stik {
+    width: 40px;
+    height: 100px;
+    background: #deb887;
+    border-radius: 20px;
+    border: 2px solid #8b4513;
+    transition: transform 0.4s ease-in-out;
+}
+
+.stik.flip-win { transform: rotateX(180deg) scale(1.1); background: var(--clr-orange-sunset); }
+.stik.flip-lose { transform: rotateX(180deg) scale(0.9); opacity: 0.5; }
+
+.cups-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+.cup {
+    width: 60px;
+    height: 80px;
+    background: #cc88ff;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.cup:hover { transform: translateY(-5px); }
+.cup.lift { transform: translateY(-40px); }
+
+.ball {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    opacity: 0;
+}
+.cup.lift .ball { opacity: 1; }
+
+
 /* ===== MEDIA QUERIES ===== */
 @media (max-width: 992px) {
     .hero-section {

@@ -170,6 +170,66 @@
         </div>
     </section>
 
+    <!-- Trial Section -->
+    <section id="coba-main" class="trial-section section-padding">
+        <div class="container text-center fade-in-up">
+            <h2>Coba Main Sekarang!</h2>
+            <p class="section-subtitle">Rasakan simulasi digital Menanti Senja. Putar jarum jam dan kumpulkan koin
+                sebelum jam 18:00!</p>
+
+            <div class="trial-dashboard glass-panel">
+                <div class="trial-stats-container">
+                    <div class="trial-stats player-stats">
+                        <h4>Pemain 1</h4>
+                        <div class="stat-box">
+                            <span class="stat-label">Waktu</span>
+                            <span id="trial-time" class="stat-value">13:30</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Koin</span>
+                            <span id="trial-coins" class="stat-value">5</span>
+                        </div>
+                    </div>
+                    <div class="trial-stats cpu-stats">
+                        <h4>CPU</h4>
+                        <div class="stat-box">
+                            <span class="stat-label">Waktu</span>
+                            <span id="cpu-time" class="stat-value">13:30</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Koin</span>
+                            <span id="cpu-coins" class="stat-value">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trial-timeline">
+                    <div class="timeline-track">
+                        <div class="timeline-bg"></div>
+                        <div id="timeline-character" class="timeline-character player-track">
+                            <img src="foto ori/kar1.jpeg" alt="Bidak Pemain">
+                        </div>
+                        <div id="timeline-cpu" class="timeline-character cpu-track">
+                            <img src="foto ori/kar2.jpeg" alt="Bidak CPU">
+                        </div>
+                    </div>
+                    <div class="timeline-labels">
+                        <span>Sekolah (13.30)</span>
+                        <span>Rumah (18.00)</span>
+                    </div>
+                </div>
+                
+                <div class="spinner-container">
+                    <button id="btn-spin" class="btn btn-primary btn-spin">Putar Jarum Jam</button>
+                </div>
+
+                <div id="trial-log" class="trial-log">
+                    Tekan tombol Putar Jarum Jam untuk memulai!
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- How to Play Section -->
     <section id="cara-main" class="how-to-play-section section-padding">
         <div class="container text-center fade-in-up">
@@ -183,6 +243,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Modals for Trial -->
+    <div id="game-modal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <h3 id="modal-title" class="modal-title">Mini Game</h3>
+            <div id="modal-body" class="modal-body">
+                <!-- Dynamic content will be injected here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
